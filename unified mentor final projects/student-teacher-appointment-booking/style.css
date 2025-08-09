@@ -173,3 +173,8 @@ hr {
     width: auto;
   }
 }
+@media (max-width: 600px) {
+  h1 {
+    font-size: 1.5em; /* Reduce font size on smaller screens */
+  }
+}
