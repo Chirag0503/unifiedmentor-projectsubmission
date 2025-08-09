@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Student Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h2>Welcome, Student</h2>
+
+    <div class="search-container">
+      <input type="text" id="searchInput" placeholder="Search by name or subject">
+      <button id="searchButton">Search</button>
+    </div>
+    
+    <div id="teacherList"></div>
+
+    <div class="card" id="appointmentForm" style="display:none;">
+      <p>Booking with: <span id="selectedTeacherName"></span></p>
+      <input type="datetime-local" id="appointmentTime">
+      <textarea id="appointmentMessage" placeholder="Message"></textarea>
+      <button onclick="bookAppointment()">Confirm Booking</button>
+    </div>
+  </div>
+
+
+ <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+<script src="firebase.js"></script>
+<script src="app.js"></script>
+
+
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>User Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h2>Welcome, User</h2>
+    <h3>Available Products</h3>
+    <div id="productList"></div>
+
+    <h3>My Cart</h3>
+    <div id="cartList"></div>
+    <p>Total: <span id="cartTotal">0</span></p>
+    <button id="placeOrderButton">Place Order</button>
+
+    <h3>My Orders</h3>
+    <div id="orderList"></div>
+  </div>
+
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+  <script src="firebase.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

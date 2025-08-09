@@ -1,0 +1,77 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f0f4f8;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 800px;
+  margin: 50px auto;
+  text-align: center;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1, h2, h3 {
+  color: #333;
+}
+
+.card {
+  background-color: #f8f9fa;
+  padding: 20px;
+  margin: 20px auto;
+  border-radius: 8px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  width: 90%;
+  max-width: 400px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+input, select, textarea {
+  margin: 10px 0;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+}
+
+button {
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 4px;
+  margin-top: 10px;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+#productList, #cartList, #orderList, #allProducts, #allOrders {
+  margin-top: 20px;
+  text-align: left;
+}
+
+#productList div, #cartList div, #orderList div, #allProducts div, #allOrders div {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+#productList div:last-child, #cartList div:last-child, #orderList div:last-child, #allProducts div:last-child, #allOrders div:last-child {
+  border-bottom: none;
+}
+
+a {
+  color: #007bff;
+  text-decoration: none;
+}

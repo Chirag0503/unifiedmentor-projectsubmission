@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My Landing Page</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    body {
+      background: #f4f4f4;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    header {
+      background: #4a90e2;
+      color: #fff;
+      padding: 20px 0;
+      text-align: center;
+    }
+
+    .hero {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 60px 20px;
+      background-color: #ffffff;
+    }
+
+    .hero h1 {
+      font-size: 2.5em;
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      font-size: 1.2em;
+      max-width: 600px;
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .hero button {
+      padding: 12px 24px;
+      font-size: 1em;
+      border: none;
+      background: #4a90e2;
+      color: white;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .hero button:hover {
+      background: #357ab8;
+    }
+
+    .features {
+      display: flex;
+      justify-content: space-around;
+      padding: 50px 20px;
+      background: #e6f0ff;
+      flex-wrap: wrap;
+    }
+
+    .feature-box {
+      width: 300px;
+      background: white;
+      margin: 10px;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+
+    .feature-box h3 {
+      margin-bottom: 10px;
+    }
+
+    footer {
+      background: #333;
+      color: white;
+      text-align: center;
+      padding: 20px 0;
+      margin-top: 50px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>My First Landing Page</h1>
+  </header>
+
+  <section class="hero">
+    <h1>Welcome to My Page</h1>
+    <p>This is a simple landing page designed with HTML and CSS. It’s clean, mobile-friendly, and a great project to begin your web development journey.</p>
+    <button>Get Started</button>
+  </section>
+
+  <section class="features">
+    <div class="feature-box">
+      <h3>Simple Layout</h3>
+      <p>Designed with Flexbox for responsive design and easy alignment.</p>
+    </div>
+    <div class="feature-box">
+      <h3>Clean Code</h3>
+      <p>Uses modern HTML5 and CSS3 for better readability and performance.</p>
+    </div>
+    <div class="feature-box">
+      <h3>Easy to Customize</h3>
+      <p>You can easily change colors, text, and layout as you like.</p>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 My Landing Page | Designed by Me</p>
+  </footer>
+
+</body>
+</html>
