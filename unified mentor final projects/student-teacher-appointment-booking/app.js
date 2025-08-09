@@ -58,14 +58,14 @@ if (loginForm) {
       .then((userCredential) => {
         const user = userCredential.user;
 
-        // ✅ Direct admin check
+        // Direct admin check
         if (user.email === "admin@gmail.com") { // change to your admin email
           alert("Welcome Admin!");
           window.location.href = "admin.html";
           return;
         }
 
-        // ✅ For all others, get role from Firestore
+        // For all others, get role from Firestore
         const uid = user.uid;
         return firebase.firestore().collection("users").doc(uid).get();
       })
@@ -90,14 +90,14 @@ if (loginForm) {
   });
 }
 
-
-
 // 🔍 Student Dashboard
 const searchInput = document.getElementById("searchInput");
 const searchButton = document.getElementById("searchButton");
 const teacherListDiv = document.getElementById("teacherList");
 const appointmentForm = document.getElementById("appointmentForm");
 const selectedTeacherName = document.getElementById("selectedTeacherName");
+const myAppointmentsDiv = document.getElementById("myAppointments"); // Added for student appointments
+
 let selectedTeacherId = null;
 
 if (searchButton && teacherListDiv) {
@@ -116,11 +116,10 @@ if (searchButton && teacherListDiv) {
       ) {
         found = true;
         const div = document.createElement("div");
-        div.className = "teacher-detail-card";
         div.innerHTML = `
-          <strong>${data.name}</strong>
-          <span>Subject: ${data.subject}</span>
+          <strong>${data.name}</strong> (${data.subject})
           <button onclick="selectTeacher('${doc.id}', '${data.name}')">Book</button>
+          <hr>
         `;
         teacherListDiv.appendChild(div);
       }
@@ -151,8 +150,51 @@ if (searchButton && teacherListDiv) {
     }).then(() => {
       alert("Appointment request sent!");
       appointmentForm.style.display = "none";
+      loadMyStudentAppointments(); // Refresh the list after booking
     });
   };
+}
+
+// Function to load and display student's appointments
+const loadMyStudentAppointments = () => {
+  myAppointmentsDiv.innerHTML = "<h4>Loading your appointments...</h4>";
+  firebase.auth().onAuthStateChanged((user) => {
+    if (user) {
+      firebase.firestore().collection("appointments")
+        .where("studentId", "==", user.uid)
+        .get()
+        .then(async (snapshot) => {
+          if (snapshot.empty) {
+            myAppointmentsDiv.innerHTML = "<p>You have no appointments yet.</p>";
+            return;
+          }
+          
+          myAppointmentsDiv.innerHTML = "";
+          for (const doc of snapshot.docs) {
+            const data = doc.data();
+            
+            // Fetch the teacher's name for a better display
+            const teacherDoc = await firebase.firestore().collection("teachers").doc(data.teacherId).get();
+            const teacherName = teacherDoc.exists ? teacherDoc.data().name : "Unknown Teacher";
+            
+            const div = document.createElement("div");
+            div.innerHTML = `
+              <p><strong>Teacher:</strong> ${teacherName}</p>
+              <p><strong>Time:</strong> ${new Date(data.time).toLocaleString()}</p>
+              <p><strong>Message:</strong> ${data.message}</p>
+              <p><strong>Status:</strong> ${data.status}</p>
+              <hr>
+            `;
+            myAppointmentsDiv.appendChild(div);
+          }
+        });
+    }
+  });
+};
+
+// Call the function on page load for the student dashboard
+if (myAppointmentsDiv) {
+  loadMyStudentAppointments();
 }
 
 // 👨‍🏫 Teacher Dashboard
@@ -211,7 +253,6 @@ if (userList && allAppointments) {
       div.innerHTML = `
         <p><strong>Student ID:</strong> ${data.studentId}</p>
         <p><strong>Teacher ID:</strong> ${data.teacherId}</p>
-        <p><strong>student name:</strong> ${data.stu}
         <p><strong>Time:</strong> ${data.time}</p>
         <p><strong>Message:</strong> ${data.message}</p>
         <p><strong>Status:</strong> ${data.status}</p>
